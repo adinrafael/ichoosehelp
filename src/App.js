@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './App.css';
 
@@ -13,9 +12,10 @@ function App() {
         <img
           src="/menu_logo.png"
           alt="Menu Button"
-          className={`menu-button ${menuOpen ? 'pressed' : ''}`}
+          className={\`menu-button \${menuOpen ? 'pressed' : ''}\`}
           onClick={() => setMenuOpen(!menuOpen)}
         />
+        <div className="site-title">I Choose Help</div>
       </header>
 
       {menuOpen && (
