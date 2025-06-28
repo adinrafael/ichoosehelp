@@ -45,8 +45,8 @@ html, body, #root, .App {
 }
 
 .menu-button {
-  width: 66px;  /* 10% bigger than 60px */
-  height: 66px;
+  width: 72px;
+  height: 72px;
   cursor: pointer;
   transition: transform 0.15s;
   margin-right: 28px;
@@ -92,13 +92,15 @@ html, body, #root, .App {
   font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: 0.02em;
-  transition: font-weight 0.15s, color 0.15s;
+  transition: font-weight 0.18s, color 0.16s, transform 0.18s;
   word-break: break-word;
+  display: block;
 }
 
 .menu-items a:hover {
   font-weight: 700;
   color: #4cc7ff;
+  transform: scale(1.22);
 }
 
 /* Main Center Logo + Coming Soon */
@@ -112,8 +114,8 @@ html, body, #root, .App {
 }
 
 .main-logo {
-  max-width: 320px;
-  width: 75vw;
+  max-width: 410px;
+  width: 90vw;
   height: auto;
   margin-bottom: 38px;
   margin-top: 28px;
@@ -160,8 +162,8 @@ html, body, #root, .App {
     padding-right: 6px;
   }
   .menu-button {
-    width: 48px;
-    height: 48px;
+    width: 58px;
+    height: 58px;
     margin-right: 16px;
   }
   .menu-items {
@@ -174,9 +176,12 @@ html, body, #root, .App {
   .menu-items a {
     font-size: 1rem;
   }
+  .menu-items a:hover {
+    transform: scale(1.18);
+  }
   .main-logo {
-    max-width: 170px;
-    margin-bottom: 20px;
+    max-width: 210px;
+    margin-bottom: 18px;
     margin-top: 12px;
   }
   .coming-soon {
