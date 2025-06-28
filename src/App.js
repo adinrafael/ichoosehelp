@@ -28,6 +28,15 @@ function App() {
           <a href="#book">Book a Time</a>
         </nav>
       )}
+
+      <main className="center-content">
+        <img src="/logo.png" alt="Logo" className="main-logo" />
+        <div className="coming-soon">COMING SOON</div>
+      </main>
+
+      <footer className="footer">
+        © 2025 Adin Rafael. All rights reserved.
+      </footer>
     </div>
   );
 }
