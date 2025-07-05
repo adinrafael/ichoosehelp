@@ -1,49 +1,41 @@
-import React from "react";
-import menuLogo from "../public/menu_logo.png";
-import logo from "../public/logo.png";
+"use client";
+import { useState } from "react";
+import { FaBars, FaHome } from "react-icons/fa";
+import Menu from "./Menu";
 import Image from "next/image";
+import logo from "../public/logo.png";
 
-const headerStyle = {
-  height: "66px", // 2/3 of typical 100px header
-  background: "#111",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  position: "relative",
-  width: "100%",
-  zIndex: 10,
-};
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
 
-const iconStyle = {
-  width: "57px", // slightly bigger than before
-  height: "57px",
-  margin: "0 32px",
-};
-
-const houseStyle = {
-  width: "57px",
-  height: "57px",
-  margin: "0 32px",
-  cursor: "pointer",
-};
-
-export default function Header({ onMenuClick, onHomeClick }) {
   return (
-    <header style={headerStyle}>
-      <div style={{ display: "flex", alignItems: "center", width: "100%", justifyContent: "center" }}>
-        <div style={iconStyle}>
-          <Image src={menuLogo} alt="Menu" width={57} height={57} priority onClick={onMenuClick} style={{ cursor: "pointer" }} />
-        </div>
-        <div style={houseStyle}>
-          <svg viewBox="0 0 60 60" fill="#fff" onClick={onHomeClick} style={{ width: "100%", height: "100%", cursor: "pointer" }}>
-            <path d="M30 10L10 28h5v17h30V28h5L30 10z" />
-          </svg>
-        </div>
-        <h1 style={{ color: "#fff", fontSize: "3rem", fontWeight: "bold", margin: "0 32px" }}>I Choose Help</h1>
-        <div style={iconStyle}>
-          <Image src={logo} alt="Logo" width={57} height={57} priority />
-        </div>
+    <header className="fixed top-0 left-0 w-full bg-white/30 backdrop-blur-lg shadow-md z-50 flex items-center justify-between px-4 py-2">
+      <div className="flex items-center space-x-2">
+        <button
+          className={`p-2 rounded ${isOpen ? "bg-white/60 shadow-inner" : ""}`}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Menu"
+        >
+          <FaBars className="text-white hover:text-black transition" size={24} />
+        </button>
+        <button
+          className="p-2"
+          onClick={() => (window.location.href = "/")}
+          aria-label="Home"
+        >
+          <FaHome className="text-white hover:text-black transition" size={24} />
+        </button>
       </div>
+
+      <div className="flex items-center space-x-2 translate-x-[-40px]">
+        <Image src={logo} alt="Logo" width={30} height={30} />
+        <span className="text-white font-poppins text-[20px] tracking-wide">
+          I Choose Help
+        </span>
+        <Image src={logo} alt="Logo" width={30} height={30} />
+      </div>
+
+      <Menu isOpen={isOpen} />
     </header>
   );
 }

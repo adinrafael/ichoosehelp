@@ -1,18 +1,9 @@
 export default function Footer() {
   return (
-    <footer style={{
-      width: "100%",
-      textAlign: "center",
-      background: "#111",
-      color: "#fff",
-      fontSize: 20,
-      padding: "18px 0",
-      position: "fixed",
-      left: 0,
-      bottom: 0,
-      zIndex: 10,
-    }}>
-      © {new Date().getFullYear()} iChooseHelp. All rights reserved.
+    <footer className="w-full bg-white/30 backdrop-blur-md py-2 shadow-inner fixed bottom-0 left-0 flex justify-center items-center text-sm h-[30px] z-40">
+      <p className="text-white font-light">
+        &copy; {new Date().getFullYear()} I Choose Help. All rights reserved.
+      </p>
     </footer>
   );
 }

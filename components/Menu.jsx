@@ -1,61 +1,63 @@
+"use client";
 import Link from "next/link";
-import React, { useState } from "react";
 
-const menuStyle = {
-  background: "#a5a5a5",
-  borderRadius: "18px",
-  padding: "8px 0",
-  width: "390px",
-  position: "absolute",
-  top: "76px",
-  left: "24px",
-  boxShadow: "0 8px 30px rgba(0,0,0,.12)",
-};
-
-const menuItemStyle = {
-  padding: "18px 32px",
-  fontSize: "2rem",
-  color: "#fff",
-  fontWeight: "400",
-  background: "transparent",
-  border: "none",
-  cursor: "pointer",
-  width: "100%",
-  textAlign: "left",
-  outline: "none",
-  transition: "font-weight 0.2s",
-};
-
-const menuItemBold = {
-  ...menuItemStyle,
-  fontWeight: "700",
-};
-
-const items = [
-  { label: "About Us", link: "/about-us" },
-  { label: "OCD Information", link: "/ocd-information" },
-  { label: "Phobia Information", link: "/phobia-information" },
-  { label: "Trauma Information", link: "/trauma-information" },
-  { label: "Contact Us", link: "/contact-us" },
-  { label: "Book a Time", link: "/book-a-time" },
-];
-
-export default function Menu({ open, onClose }) {
-  const [hovered, setHovered] = useState(-1);
-  if (!open) return null;
+export default function Menu({ isOpen }) {
   return (
-    <div style={menuStyle} onMouseLeave={() => setHovered(-1)}>
-      {items.map((item, idx) => (
-        <Link key={item.label} href={item.link} passHref legacyBehavior>
-          <a
-            style={hovered === idx ? menuItemBold : menuItemStyle}
-            onMouseEnter={() => setHovered(idx)}
-            onMouseLeave={() => setHovered(-1)}
+    <nav
+      className={`absolute top-full left-0 w-full bg-white/30 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden rounded-b-xl shadow-lg ${
+        isOpen ? "max-h-96 opacity-100 py-4" : "max-h-0 opacity-0 py-0"
+      }`}
+    >
+      <ul className="flex flex-col items-start px-6 space-y-4">
+        <li>
+          <Link
+            href="/"
+            className="text-white hover:text-black font-semibold transition-all duration-300"
           >
-            {item.label}
-          </a>
-        </Link>
-      ))}
-    </div>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/ocd-info"
+            className="text-white hover:text-black font-semibold transition-all duration-300"
+          >
+            OCD Information
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/phobia-info"
+            className="text-white hover:text-black font-semibold transition-all duration-300"
+          >
+            Phobia Information
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/trauma-info"
+            className="text-white hover:text-black font-semibold transition-all duration-300"
+          >
+            Trauma Information
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/contact-us"
+            className="text-white hover:text-black font-semibold transition-all duration-300"
+          >
+            Contact Us
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/book"
+            className="text-white hover:text-black font-semibold transition-all duration-300"
+          >
+            Book a Time
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 }
