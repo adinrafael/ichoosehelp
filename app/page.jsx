@@ -7,3 +7,8 @@ export default function Home() {
           alt="Site Logo"
           className="mx-auto mb-6 w-40 h-40"
         />
+        <h1 className="text-4xl font-semibold">COMING SOON</h1>
+      </div>
+    </div>
+  );
+}
