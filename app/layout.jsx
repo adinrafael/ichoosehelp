@@ -1,24 +1,25 @@
-import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { Poppins } from "next/font/google";
+"use client";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
+import "./globals.css";
+import React, { useState } from "react";
+import Header from "../components/Header";
+import Menu from "../components/Menu";
+import Footer from "../components/Footer";
 
 export const metadata = {
   title: "I Choose Help",
-  description: "Support for OCD, trauma, and phobias",
+  description: "Support for OCD, trauma, and phobias.",
 };
 
 export default function RootLayout({ children }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <html lang="en">
-      <body
-        className={`${poppins.className} bg-cover bg-center bg-fixed bg-no-repeat min-h-screen flex flex-col justify-between`}
-        style={{ backgroundImage: "url('/background.jpg')" }}
-      >
-        <Header />
-        <main className="flex-grow pt-20">{children}</main>
+      <body>
+        <Header toggleMenu={() => setMenuOpen((prev) => !prev)} />
+        <Menu isOpen={menuOpen} toggleMenu={setMenuOpen} />
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

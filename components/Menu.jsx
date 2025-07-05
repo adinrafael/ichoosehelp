@@ -1,63 +1,66 @@
 "use client";
-import Link from "next/link";
 
-export default function Menu({ isOpen }) {
+import React, { useEffect, useRef } from "react";
+import Link from "next/link";
+import styles from "../styles/Menu.module.css";
+
+export default function Menu({ isOpen, toggleMenu }) {
+  const menuRef = useRef();
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        toggleMenu(false);
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, toggleMenu]);
+
+  if (!isOpen) return null;
+
   return (
-    <nav
-      className={`absolute top-full left-0 w-full bg-white/30 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden rounded-b-xl shadow-lg ${
-        isOpen ? "max-h-96 opacity-100 py-4" : "max-h-0 opacity-0 py-0"
-      }`}
-    >
-      <ul className="flex flex-col items-start px-6 space-y-4">
+    <div ref={menuRef} className={styles.menuContainer}>
+      <ul className={styles.menuList}>
         <li>
-          <Link
-            href="/"
-            className="text-white hover:text-black font-semibold transition-all duration-300"
-          >
-            Home
+          <Link href="/about-us" onClick={() => toggleMenu(false)}>
+            About Us
           </Link>
         </li>
         <li>
-          <Link
-            href="/ocd-info"
-            className="text-white hover:text-black font-semibold transition-all duration-300"
-          >
+          <Link href="/ocd-info" onClick={() => toggleMenu(false)}>
             OCD Information
           </Link>
         </li>
         <li>
-          <Link
-            href="/phobia-info"
-            className="text-white hover:text-black font-semibold transition-all duration-300"
-          >
+          <Link href="/phobia-info" onClick={() => toggleMenu(false)}>
             Phobia Information
           </Link>
         </li>
         <li>
-          <Link
-            href="/trauma-info"
-            className="text-white hover:text-black font-semibold transition-all duration-300"
-          >
+          <Link href="/trauma-info" onClick={() => toggleMenu(false)}>
             Trauma Information
           </Link>
         </li>
         <li>
-          <Link
-            href="/contact-us"
-            className="text-white hover:text-black font-semibold transition-all duration-300"
-          >
+          <Link href="/contact-us" onClick={() => toggleMenu(false)}>
             Contact Us
           </Link>
         </li>
         <li>
-          <Link
-            href="/book"
-            className="text-white hover:text-black font-semibold transition-all duration-300"
-          >
+          <Link href="/book" onClick={() => toggleMenu(false)}>
             Book a Time
           </Link>
         </li>
       </ul>
-    </nav>
+    </div>
   );
 }

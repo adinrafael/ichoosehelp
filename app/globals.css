@@ -1,15 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+/* Body background setup */
 body {
-  background: url("/background.jpg") center center / cover no-repeat fixed, #181818;
-  font-family: 'Montserrat', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  @apply text-white bg-gray-900;
+  background-image: url("/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
 }
 
-a {
-  color: #fff;
-  text-decoration: none;
+/* Smooth transitions for interactive elements */
+a,
+button {
+  @apply transition duration-150 ease-in-out;
 }
 
-a:active, a:visited {
-  color: #fff;
+/* For glass effect reuse */
+.glass {
+  @apply bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20 shadow-lg rounded-xl;
 }

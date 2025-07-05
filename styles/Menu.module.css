@@ -1,0 +1,23 @@
+.menuContainer {
+  @apply absolute top-20 left-2 w-56 bg-white bg-opacity-10 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-xl z-40 p-4;
+  animation: slideIn 0.2s ease-out forwards;
+}
+
+.menuList {
+  @apply flex flex-col space-y-3 text-white text-sm font-medium;
+}
+
+.menuList li a {
+  @apply hover:text-blue-300 hover:scale-105 transition-all duration-150 ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

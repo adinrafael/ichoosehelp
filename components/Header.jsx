@@ -1,41 +1,37 @@
 "use client";
-import { useState } from "react";
+
+import React from "react";
+import Link from "next/link";
+import styles from "../styles/Header.module.css";
 import { FaBars, FaHome } from "react-icons/fa";
-import Menu from "./Menu";
-import Image from "next/image";
-import logo from "../public/logo.png";
 
-export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-
+export default function Header({ toggleMenu }) {
   return (
-    <header className="fixed top-0 left-0 w-full bg-white/30 backdrop-blur-lg shadow-md z-50 flex items-center justify-between px-4 py-2">
-      <div className="flex items-center space-x-2">
-        <button
-          className={`p-2 rounded ${isOpen ? "bg-white/60 shadow-inner" : ""}`}
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle Menu"
-        >
-          <FaBars className="text-white hover:text-black transition" size={24} />
+    <header className={styles.header}>
+      <div className={styles.leftIcons}>
+        <button className={styles.iconButton} onClick={toggleMenu}>
+          <FaBars />
         </button>
-        <button
-          className="p-2"
-          onClick={() => (window.location.href = "/")}
-          aria-label="Home"
-        >
-          <FaHome className="text-white hover:text-black transition" size={24} />
-        </button>
+        <Link href="/">
+          <button className={styles.iconButton}>
+            <FaHome />
+          </button>
+        </Link>
       </div>
 
-      <div className="flex items-center space-x-2 translate-x-[-40px]">
-        <Image src={logo} alt="Logo" width={30} height={30} />
-        <span className="text-white font-poppins text-[20px] tracking-wide">
-          I Choose Help
-        </span>
-        <Image src={logo} alt="Logo" width={30} height={30} />
+      <div className={styles.centerTitle}>
+        <img
+          src="/menu_logo.png"
+          alt="Left Logo"
+          className={styles.sideLogo}
+        />
+        <h1 className={styles.siteTitle}>I Choose Help</h1>
+        <img
+          src="/menu_logo.png"
+          alt="Right Logo"
+          className={styles.sideLogo}
+        />
       </div>
-
-      <Menu isOpen={isOpen} />
     </header>
   );
 }
