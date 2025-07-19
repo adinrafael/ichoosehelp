@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global background */
+body {
+  min-height: 100vh;
+  background: url('/modern-background-with-lines.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #181818;
+}
+
+/* Modern Castellar look for just the main heading */
+.castellar {
+  font-family: 'Castellar', serif;
+  font-size: 2.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+}
+
+/* Header bar styling */
+header {
+  background: rgba(240,240,240,0.96);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  border-bottom: 1px solid #eee;
+}
+
+header .logo-img {
+  width: 44px;
+  height: 44px;
+}
+
+/* Hero content for homepage */
+.hero-content {
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content .castellar {
+  font-size: 3rem;
+  margin-top: 1.8rem;
+}
+
+.hero-content .subtitle {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-top: 0.4em;
+  font-weight: 400;
+}
+
+/* Centered card wrapper for all subpages */
+.centered-card-wrapper {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  margin-top: 2rem;
+}
+
+/* Card styles */
+.card {
+  background: rgba(255,255,255,0.97);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.19), 0 1.5px 6px rgba(61,182,180,0.10);
+  padding: 3rem 2.5rem;
+  max-width: 580px;
+  width: 100%;
+  text-align: center;
+  transition: box-shadow 0.15s;
+}
+
+.card.dark {
+  background: rgba(29,44,57,0.92);
+  color: #fff;
+}
+
+.card h2 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.card p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: inherit;
+}
+
+/* Contact form styles */
+.contact-card {
+  margin: 3rem auto 0 auto;
+  background: rgba(255,255,255,0.96);
+  border-radius: 1.25rem;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.13);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  max-width: 420px;
+  width: 100%;
+}
+
+.contact-card h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #161616;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.contact-card label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+  display: block;
+}
+
+.contact-card input,
+.contact-card textarea {
+  width: 100%;
+  border: 1px solid #bbb;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.3rem;
+  font-size: 1.1rem;
+  font-family: inherit;
+  background: #fafafa;
+  transition: border-color 0.2s;
+}
+
+.contact-card input:focus,
+.contact-card textarea:focus {
+  border-color: #3db6b4;
+  outline: none;
+  background: #fff;
+}
+
+.contact-card button[type="submit"] {
+  background: #3db6b4;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.9rem 2.3rem;
+  font-size: 1.12rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-card button[type="submit"]:hover {
+  background: #24938e;
+}
+
+/* Responsive tweaks */
+@media (max-width: 650px) {
+  .card {
+    padding: 1.3rem 0.7rem;
+    max-width: 97vw;
+  }
+  .centered-card-wrapper {
+    margin-top: 0;
+    min-height: 65vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-card {
+    padding: 1.2rem 1rem 1rem 1rem;
+    max-width: 97vw;
+  }
+  .hero-content .castellar {
+    font-size: 2rem;
+  }
+}
