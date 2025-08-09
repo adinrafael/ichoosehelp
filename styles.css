@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #c8ffff;
+  background: #111 url('/diagonal-bg.jpg') no-repeat center/cover fixed;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  background: rgba(18, 22, 26, 0.96);
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  box-shadow: 0 3px 18px rgba(10,15,20,0.25);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.header-left { display: flex; align-items: center; gap: 0.6rem; }
+
+.icon-btn {
+  background: rgba(30, 40, 48, 0.8);
+  border: none;
+  border-radius: 12px;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+  transition: filter .2s, background .2s;
+}
+.icon-btn:hover { filter: brightness(1.15); }
+
+.menu-icon { font-size: 1.6rem; color: #bafcff; }
+
+.header-logo {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  object-fit: contain;
+  box-shadow: 0 0 8px #00e8ff22;
+}
+
+.header-title {
+  margin-left: 0.9rem;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #bafcff;
+  text-shadow: 0 3px 14px #12313f66;
+}
+
+/* MENU DRAWER */
+.menu-drawer {
+  position: fixed;
+  top: 64px;               /* sits just under the header */
+  left: 12px;
+  width: 260px;
+  background: rgba(17, 21, 26, 0.97);
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+  padding: 14px 10px;
+  transform: translateY(-18px) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+  z-index: 1001;
+}
+.menu-drawer.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.menu-link {
+  display: block;
+  padding: 12px 14px;
+  margin: 2px 4px;
+  color: #bafcff;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background .15s, color .15s, padding-left .15s;
+}
+.menu-link:hover {
+  background: #1e2c36;
+  color: #e9ffff;
+  padding-left: 18px;
+}
+
+/* MAIN */
+main { min-height: 78vh; display: flex; align-items: center; justify-content: center; }
+
+/* Footer text only */
+.copyright {
+  text-align: center;
+  font-size: .9rem;
+  color: #a0e7ef;
+  margin: 28px 0 10px;
+}
+
+/* Home hero bits (optional) */
+.welcome-title { font-size: 1.6rem; color: #bafcff; text-align: center; }
+.welcome-subtitle { font-size: 2.2rem; font-weight: 900; text-align: center; margin: .3rem 0 .8rem; }
+.coming-soon { text-align: center; letter-spacing: 2px; opacity: .9; }
+
+/* Small screens */
+@media (max-width: 600px) {
+  .header-title { font-size: 1.3rem; }
+  .menu-drawer { width: 92vw; left: 4vw; }
+}
